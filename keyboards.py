@@ -5,7 +5,6 @@ from aiogram.types import KeyboardButton, InlineKeyboardButton
 def main_keyboard():
     keyboard = ReplyKeyboardBuilder()
     keyboard.add(KeyboardButton(text="Отправить новость"))
-    keyboard.add(KeyboardButton(text="Отправить мем"))
     return keyboard.as_markup(resize_keyboard=True)
 
 def admin_keyboard(news_id: int):
