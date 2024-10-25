@@ -1,0 +1,2 @@
+API_TOKEN = 'tg token'
+ADMIN_IDS = [9038228, 3240982038, 23497493] #admiin ids
