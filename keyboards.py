@@ -11,4 +11,5 @@ def admin_keyboard(news_id: int):
     keyboard = InlineKeyboardBuilder()
     keyboard.button(text="✅ Одобрить", callback_data=f"approve:{news_id}")
     keyboard.button(text="❌ Отклонить", callback_data=f"reject:{news_id}")
+    keyboard.button(text="🚫 Заблокировать", callback_data=f"block:{news_id}")
     return keyboard.as_markup()
