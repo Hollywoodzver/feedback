@@ -8,6 +8,8 @@ engine = create_async_engine("sqlite+aiosqlite:///db.sqlite3", echo=True)
 # Создаем асинхронный фабричный метод для сессий
 async_session = async_sessionmaker(bind=engine, expire_on_commit=False)
 
+session = async_session()
+
 class Base(AsyncAttrs, DeclarativeBase):
     pass
 
@@ -15,6 +17,7 @@ class User(Base):
     __tablename__ = 'users'
     id: Mapped[int] = mapped_column(primary_key=True)
     tg_id = mapped_column(BigInteger)
+    tg_us = mapped_column(String)
 
 class Banned(Base):
     __tablename__ = 'blocked_users'
@@ -25,8 +28,9 @@ class News(Base):
     __tablename__ = 'news'
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id = mapped_column(BigInteger)  # tg_id отправителя
+    user_us = mapped_column(String)
     text = mapped_column(String)        # Текст новости
-    status = mapped_column(String)
+    status = mapped_column(String) 
 
     
 async def async_main():
